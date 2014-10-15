@@ -9,7 +9,7 @@ app.<%- conn.method %>("<%- conn.path %>", function(req, res) {
 <%   for (var j = 0; conn.params && j < conn.params.length; ++j) { 
        var name = conn.params[j].name;
        var regex = conn.params[j].regex; -%>
-  var <%- name %> = req.body.<%- name %><%- regex ? '' : ' // Unsanitized' -%>;
+  var <%- name %> = req.body.<%- name %><%- regex ? '' : ' // Unsanitized' %>;
 <%     if (regex) { -%>
   if (!<%- name %>.match("<%- regex %>")) {
     console.log('bad input');
