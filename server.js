@@ -7,6 +7,7 @@ var BODY_PARSER = require('body-parser');
 app.<%- conn.method %>("<%- conn.path %>", function(req, res) {
   var sanitized = {};
 <%   for (var j = 0; conn.params && j < conn.params.length; ++j) { 
+
        var name = conn.params[j].name;
        var regex = conn.params[j].regex; -%>
   var <%- name %> = req.body.<%- name %><%- regex ? '' : ' // Unsanitized' %>;
@@ -21,7 +22,9 @@ app.<%- conn.method %>("<%- conn.path %>", function(req, res) {
   sanitized.<%- name %> = <%- name %>;
 <%     } -%>
 <%   } -%>
-  <%- conn.call %>(sanitized); 
+
+  <%- conn.call %>(req, res, sanitized);
 });
 <% } -%>
+
 app.listen(<%- port %>);
