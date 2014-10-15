@@ -21,7 +21,7 @@ app.<%- conn.method -%>("<%- conn.path -%>", function(req, res) {
   sanitized.<%- name -%> = <%- name -%>;
 <%     } -%>
 <%   } -%>
-  <%- conn.call -%>(sanitized); 
+  <%- conn.call %>(sanitized); 
 });
-<% } %>
-app.listen(<%- port -%>);
+<% } -%>
+app.listen(<%- port %>);
