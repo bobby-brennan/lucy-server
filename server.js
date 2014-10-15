@@ -6,7 +6,7 @@ var BODY_PARSER = require('body-parser');
 <%   var conn = connections[i]; %>
 app.<%= conn.method %>("<%= conn.path %>", function(req, res) {
   var sanitized = {};
-<%   for (var j = 0; j < conn.params.length; ++j) { %> 
+<%   for (var j = 0; conn.params && j < conn.params.length; ++j) { %> 
        var <%= conn.params.name %> = req.body.<%= conn.params.name %>;
        if (!<%= conn.params.name %>.match(conn.params.regex)) {
          console.log('bad input');
