@@ -20,7 +20,7 @@ app.<%- conn.method -%>("<%- conn.path -%>", function(req, res) {
 <%     } else { -%>
   sanitized.<%- name -%> = <%- name -%>;
 <%     } -%>
-<%   } -%>
+<%   } %>
   <%- conn.call -%>(sanitized); 
 });
 <% } -%>
